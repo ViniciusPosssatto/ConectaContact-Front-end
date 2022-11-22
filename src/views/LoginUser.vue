@@ -3,16 +3,21 @@
     <v-container class="fill-height conecta-color" fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" xl="4" lg="4" md="6" sm="8" xs="12">
-          <v-card elevation="24" width="500px">
+          <v-card elevation="24" width="600px" min-height="220px" class="card">
             <div class="text-center">
               <h1 class="mb-2">Acessar meus contatos Google</h1>
             </div>
-            <v-card-text>
-              <v-form>
-                <v-btn class="rounded-0" color="#311f50" x-large block @click="loginOAuth"
-                  >Login</v-btn
-                >
-              </v-form>
+            <v-card-text class="text-white">
+              <v-btn
+                class="rounded-5"
+                color="#311f50"
+                elevation="10"
+                x-large
+                block
+                @click="loginOAuth"
+                ><v-icon large color="white darken-2"> mdi-email </v-icon>
+                <span>Login</span></v-btn
+              >
             </v-card-text>
             <v-card-actions class="ml-6 mr-6 text-center">
               <p>
@@ -68,5 +73,15 @@ export default {
 }
 .conecta-color {
   background: linear-gradient(81deg, rgb(82, 41, 104) 3%, rgb(49, 31, 80) 37%);
+}
+span {
+  color: #b59ae7;
+  font-size: large;
+  font-weight: bold;
+}
+.card {
+  background: linear-gradient(81deg, rgb(140, 67, 179) 2%, rgb(101, 53, 184) 57%);
+  padding: 20px;
+  border-radius: 20px !important;
 }
 </style>
