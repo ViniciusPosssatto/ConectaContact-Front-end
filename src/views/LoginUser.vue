@@ -1,40 +1,72 @@
 <template>
-  <div class="login-view">
-    <v-container class="grey lighten-5">
-      <v-row no-gutters>
-        <v-col v-for="n in 3" :key="n" cols="12" sm="4">
-          <v-row align="center" justify="center">
-            <v-card height="300" width="250">
-              <v-row justify="center">
-                <v-btn color="orange lighten-2" class="mt-12" @click="overlay = !overlay">
-                  Show Overlay
-                </v-btn>
-
-                <v-overlay :absolute="absolute" :opacity="opacity" :value="overlay">
-                  <v-btn color="orange lighten-2" @click="overlay = false">
-                    Hide Overlay
-                  </v-btn>
-                </v-overlay>
-              </v-row>
-            </v-card>
-          </v-row>
-          <v-card class="pa-2" outlined tile> One of three columns </v-card>
+  <v-app>
+    <v-container class="fill-height conecta-color" fluid>
+      <v-row align="center" justify="center">
+        <v-col cols="12" xl="4" lg="4" md="6" sm="8" xs="12">
+          <v-card elevation="24" width="500px">
+            <div class="text-center">
+              <h1 class="mb-2">Acessar meus contatos Google</h1>
+            </div>
+            <v-card-text>
+              <v-form>
+                <v-btn class="rounded-0" color="#311f50" x-large block @click="loginOAuth"
+                  >Login</v-btn
+                >
+              </v-form>
+            </v-card-text>
+            <v-card-actions class="ml-6 mr-6 text-center">
+              <p>
+                Clicando em login você aceita Conecta Contact
+                <a href="#" class="pl-2" style="color: #000000">Policy</a> e
+                <a href="#" class="pl-2" style="color: #000000">Terms of Use</a>
+              </p>
+            </v-card-actions>
+          </v-card>
         </v-col>
       </v-row>
+      <v-row justify="space-around">
+        <v-card elevation="20" width="120px">
+          <v-img
+            src="https://scontent.ffln1-1.fna.fbcdn.net/v/t39.30808-6/309507295_796298584982511_4707131721395890912_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH8zv00USILC5xo2bX-ai-WBixml55aIvQGLGaXnloi9OiD8zKqkVJYp9d87Lyfvqq_NL2OJFYI6HROOWJaAD6p&_nc_ohc=ivoMg1hvHSoAX9cT3gc&_nc_ht=scontent.ffln1-1.fna&oh=00_AfB58-PRbYEB41uR18-jPEKEW2SQL1XD2Y-oy_Svbf5DsA&oe=63815030"
+          ></v-img>
+        </v-card>
+
+        <v-card elevation="20" width="120px">
+          <v-img
+            width="200px"
+            src="https://conectanuvem.com.br/wp-content/uploads/2021/03/Conecta-Nuvem-Parceira-Google-Cloud-1.png"
+          >
+          </v-img>
+        </v-card>
+      </v-row>
+      <v-row></v-row>
     </v-container>
-  </div>
+  </v-app>
 </template>
 
 <script>
+import axios from "axios";
+import { ref } from "vue";
 export default {
   name: "LoginUser",
-  data: () => ({
-    absolute: true,
-    opacity: 1,
-    overlay: false,
-  }),
+  setup() {
+    function loginOAuth() {
+      axios.post("http://127.0.0.1:5000/login/auth/google").then((response) => {
+        window.open(response.data.url, "_self");
+      });
+    }
+
+    return { loginOAuth };
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.loginOverlay {
+  background: rgba(33, 150, 243, 0.3);
+}
+.conecta-color {
+  background: linear-gradient(81deg, rgb(82, 41, 104) 3%, rgb(49, 31, 80) 37%);
+}
+</style>
