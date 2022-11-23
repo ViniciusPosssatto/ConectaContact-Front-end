@@ -51,17 +51,17 @@
 
 <script>
 import axios from "axios";
-import { ref } from "vue";
 export default {
   name: "LoginUser",
-  setup() {
-    function loginOAuth() {
+  data() {
+    return {};
+  },
+  methods: {
+    loginOAuth() {
       axios.post("http://127.0.0.1:5000/login/auth/google").then((response) => {
         window.open(response.data.url, "_self");
       });
-    }
-
-    return { loginOAuth };
+    },
   },
 };
 </script>
@@ -76,11 +76,12 @@ export default {
 }
 span {
   color: #b59ae7;
+  padding-left: 20px;
   font-size: large;
   font-weight: bold;
 }
 .card {
-  background: linear-gradient(81deg, rgb(140, 67, 179) 2%, rgb(101, 53, 184) 57%);
+  background: linear-gradient(81deg, rgb(81, 183, 243) 2%, rgb(69, 136, 238) 57%);
   padding: 20px;
   border-radius: 20px !important;
 }
