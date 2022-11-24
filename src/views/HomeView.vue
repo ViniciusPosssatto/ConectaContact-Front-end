@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-container class="fill-height conecta-color" fluid>
+      <v-row align="center" justify="center">
+        <CardComponent />
+      </v-row>
+      <v-row></v-row>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import CardComponent from "@/components/CardComponent.vue";
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld
-  }
-}
+    CardComponent,
+  },
+  data() {
+    return {};
+  },
+  methods: {},
+  mounted() {},
+  beforeMount() {},
+  created() {},
+  beforeCreate() {
+    if (this.$route.query.jwt) {
+      localStorage.setItem("token", this.$route.query.jwt);
+    }
+  },
+};
 </script>
+<style scoped>
+.conecta-color {
+  background: linear-gradient(81deg, rgb(119, 55, 153) 3%, rgb(82, 44, 148) 37%);
+}
+</style>

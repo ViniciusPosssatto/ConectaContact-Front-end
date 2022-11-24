@@ -1,15 +1,44 @@
 <template>
   <div id="app">
-    <NavBar />
+    <NavBar :name="user" :route="route" v-if="!path" />
     <router-view />
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import jwt_decode from "jwt-decode";
 export default {
   components: {
     NavBar,
+  },
+  data() {
+    return {
+      user: "",
+    };
+  },
+  computed: {
+    path() {
+      if (this.$route.path == "/login") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    route() {
+      if (this.$route.path == "/home/") {
+        return "Home";
+      } else if (this.$route.path == "/contacts") {
+        return "Contacts";
+      }
+    },
+  },
+  mounted() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      let data = jwt_decode(token);
+      this.user = data.name;
+    }
   },
 };
 </script>

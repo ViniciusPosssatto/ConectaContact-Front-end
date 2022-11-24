@@ -23,11 +23,41 @@
         <v-icon>mdi-heart</v-icon>
       </v-btn>
 
-      <template v-slot:extension> </template>
+      <template v-slot:extension class="back">
+        <h3>{{ route }}</h3>
+        <v-spacer></v-spacer>
+        <h3>{{ name }}</h3>
+      </template>
     </v-app-bar>
   </v-card>
 </template>
 
-<script></script>
+<script>
+export default {
+  name: "NavBar",
+  props: {
+    name: String,
+    route: String,
+  },
+  data() {
+    return {
+      rota: "",
+    };
+  },
+  methods: {},
+  watch: {
+    getName() {},
+  },
+  mounted() {},
+};
+</script>
 
-<style scoped></style>
+<style scoped>
+h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: -webkit-linear-gradient(-120deg, #530e94, #49096e, #0a0a0a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 20px;
+}
+</style>
