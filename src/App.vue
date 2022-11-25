@@ -7,7 +7,6 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import jwt_decode from "jwt-decode";
 export default {
   components: {
     NavBar,
@@ -27,18 +26,15 @@ export default {
     },
     route() {
       if (this.$route.path == "/home/") {
-        return "Home";
-      } else if (this.$route.path == "/contacts") {
         return "Contacts";
+      } else if (this.$route.path == "/contacts") {
+        return "Home";
       }
     },
   },
   mounted() {
-    const token = localStorage.getItem("token");
-    if (token) {
-      let data = jwt_decode(token);
-      this.user = data.name;
-    }
+    this.$store.dispatch("decodeJwt", "name");
+    this.user = this.$store.state.dado;
   },
 };
 </script>
