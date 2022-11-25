@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar />
+    <NavBar :name="user" :route="route" v-if="!path" />
     <router-view />
   </div>
 </template>
@@ -10,6 +10,31 @@ import NavBar from "@/components/NavBar.vue";
 export default {
   components: {
     NavBar,
+  },
+  data() {
+    return {
+      user: "",
+    };
+  },
+  computed: {
+    path() {
+      if (this.$route.path == "/login") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    route() {
+      if (this.$route.path == "/home/") {
+        return "Contacts";
+      } else if (this.$route.path == "/contacts") {
+        return "Home";
+      }
+    },
+  },
+  mounted() {
+    this.$store.dispatch("decodeJwt", "name");
+    this.user = this.$store.state.dado;
   },
 };
 </script>

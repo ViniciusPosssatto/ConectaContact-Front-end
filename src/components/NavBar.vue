@@ -23,11 +23,57 @@
         <v-icon>mdi-heart</v-icon>
       </v-btn>
 
-      <template v-slot:extension> </template>
+      <template v-slot:extension class="back">
+        <div class="route">
+          <h3 @click="pushRoute">{{ route }}</h3>
+        </div>
+        <v-spacer></v-spacer>
+        <h3>{{ name }}</h3>
+      </template>
     </v-app-bar>
   </v-card>
 </template>
 
-<script></script>
+<script>
+export default {
+  name: "NavBar",
+  props: {
+    name: String,
+    route: String,
+  },
+  data() {
+    return {
+      rota: "",
+    };
+  },
+  methods: {
+    pushRoute() {
+      if (this.$route.path == "/home/") {
+        this.$router.push({ path: "/contacts" });
+      } else {
+        this.$router.push({ path: "/home/" });
+      }
+    },
+  },
+  watch: {},
+  mounted() {},
+};
+</script>
 
-<style scoped></style>
+<style scoped>
+h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: -webkit-linear-gradient(-120deg, #450a7c, #300747, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 20px;
+}
+.route:hover {
+  box-shadow: 10px 5px 5px black;
+  -webkit-transform: scale(1.3);
+  -ms-transform: scale(1.6);
+  transform: scale(1.1);
+  background: rgb(160, 41, 230, 0.4);
+  cursor: pointer;
+}
+</style>

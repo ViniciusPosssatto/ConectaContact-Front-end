@@ -1,33 +1,32 @@
 <template>
   <v-app>
     <v-container class="fill-height conecta-color" fluid>
-      <v-row align="center" justify="center" class="row-title">
-        <h2>Clique no domínio de e-mail que deseja buscar:</h2>
-      </v-row>
       <v-row align="center" justify="center">
-        <CardComponent :domains="domains" />
-      </v-row>
-      <v-row></v-row>
+        <CardComponent :emails="emailsByParam"
+      /></v-row>
     </v-container>
   </v-app>
 </template>
 
 <script>
-import axios from "axios";
 import CardComponent from "@/components/CardComponent.vue";
+import axios from "axios";
 export default {
-  name: "HomeView",
+  name: "ContactsView",
   components: {
     CardComponent,
   },
   data() {
     return {
+      param: "",
       emails: [],
-      domains: [],
     };
   },
   methods: {
-    async getDomainsFromDB() {
+    queryParam() {
+      this.param = this.$route.query.dom;
+    },
+    async getEmailsFromDB() {
       let loader = this.$loading.show({
         // Optional parameters
         onCancel: this.onCancel,
@@ -37,25 +36,31 @@ export default {
       this.$store.dispatch("decodeJwt", "id_user");
       let idUser = this.$store.state.dado;
       await axios
-        .get(`http://localhost:5000/contacts/domain/${idUser}`)
+        .get(`http://localhost:5000/contacts/${idUser}`)
         .then((response) => {
           loader.hide();
-          this.domains = response.data.domains;
+          this.emails = response.data.results;
         })
         .catch((error) => {
           console.log("Erro =", error);
         });
     },
   },
-  mounted() {
-    this.getDomainsFromDB();
+  computed: {
+    emailsByParam() {
+      if (this.param) {
+        this.emails = this.emails.filter((item) =>
+          item.email.toLowerCase().includes(this.param.toLowerCase())
+        );
+        return this.emails;
+      } else {
+        return this.emails;
+      }
+    },
   },
-  beforeMount() {},
-  created() {},
-  beforeCreate() {
-    if (this.$route.query.jwt) {
-      localStorage.setItem("token", this.$route.query.jwt);
-    }
+  mounted() {
+    this.queryParam();
+    this.getEmailsFromDB();
   },
 };
 </script>
@@ -63,13 +68,9 @@ export default {
 .conecta-color {
   background: linear-gradient(81deg, rgb(119, 55, 153) 3%, rgb(82, 44, 148) 37%);
 }
-h2 {
-  color: azure;
-  padding: 10px;
-  margin: 10px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-.row-title {
-  display: block;
+.msgComum {
+  font-family: Open Sans, var(--nv-fallback-ff);
+  font-size: 30px;
+  color: #b7a6f5;
 }
 </style>
