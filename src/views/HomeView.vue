@@ -1,8 +1,10 @@
 <template>
   <v-app>
-    <v-container class="fill-height conecta-color" fluid>
+    <v-container class="fill-height conecta-color flexs" fluid>
       <v-row align="center" justify="center" class="row-title">
-        <h2>Clique no domínio de e-mail que deseja buscar:</h2>
+        <v-col cols="12">
+          <h2>Clique no domínio de e-mail que deseja buscar:</h2>
+        </v-col>
       </v-row>
       <v-row align="center" justify="center">
         <CardComponent :domains="domains" />
@@ -71,5 +73,8 @@ h2 {
 }
 .row-title {
   display: block;
+}
+.flexs {
+  display: block !important;
 }
 </style>
