@@ -58,9 +58,11 @@ export default {
   },
   methods: {
     loginOAuth() {
-      axios.post("http://127.0.0.1:5000/login/auth/google").then((response) => {
-        window.open(response.data.url, "_self");
-      });
+      axios
+        .post("https://conectacontactbackend-myb7gebzdq-rj.a.run.app/login/auth/google")
+        .then((response) => {
+          window.open(response.data.url, "_self");
+        });
     },
   },
 };

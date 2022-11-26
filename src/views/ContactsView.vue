@@ -5,6 +5,24 @@
         <v-col cols="12">
           <h2>Exibindo resultados para e-mails {{ param }}:</h2>
         </v-col>
+        <v-col>
+          <v-toolbar
+            dense
+            floating
+            class="toolbar-css rounded-pill"
+            color="#7f6ed4"
+            elevation="20px"
+          >
+            <v-text-field
+              color="#999"
+              hide-details
+              prepend-icon="mdi-magnify"
+              single-line
+              @input="searchInputBar"
+              v-model="searchBar"
+            ></v-text-field>
+          </v-toolbar>
+        </v-col>
         <v-col cols="12">
           <CardComponent :emails="emailsByParam" />
         </v-col>
@@ -25,6 +43,7 @@ export default {
     return {
       param: "",
       emails: [],
+      searchBar: "",
     };
   },
   methods: {
@@ -41,7 +60,7 @@ export default {
       this.$store.dispatch("decodeJwt", "id_user");
       let idUser = this.$store.state.dado;
       await axios
-        .get(`http://localhost:5000/contacts/${idUser}`)
+        .get(`https://conectacontactbackend-myb7gebzdq-rj.a.run.app/contacts/${idUser}`)
         .then((response) => {
           loader.hide();
           this.emails = response.data.results;
@@ -49,6 +68,28 @@ export default {
         .catch((error) => {
           console.log("Erro =", error);
         });
+    },
+    searchInputBar() {
+      if (this.searchBar !== "") {
+        let pesquisa = () => {
+          return this.emails.filter((item) =>
+            item.email.toLowerCase().includes(this.searchBar.toLowerCase())
+          );
+        };
+        if (pesquisa) {
+          this.emails = pesquisa(this.searchBar);
+          let count = 0;
+          if (this.emails.length === 0) {
+            count++;
+            if (count > 0) {
+              this.$toasted.clear();
+            }
+            this.$toasted.error("Usuário não encontrado... Tente outro.");
+          }
+        }
+      } else {
+        return this.getEmailsFromDB();
+      }
     },
   },
   computed: {
@@ -86,5 +127,10 @@ h2 {
   padding: 10px;
   margin: 10px;
   font-family: Georgia, "Times New Roman", Times, serif;
+}
+@media (max-width: 470px) {
+  h2 {
+    font-size: 20px !important;
+  }
 }
 </style>

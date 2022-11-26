@@ -19,16 +19,19 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+      <v-btn icon @click="logout">
+        <v-icon>mdi-logout</v-icon>
       </v-btn>
 
       <template v-slot:extension class="back">
-        <div class="route">
-          <h3 @click="pushRoute">{{ route }}</h3>
+        <div class="route" @click="pushRoute">
+          <v-icon v-if="route == 'Home'">mdi-home</v-icon>
+          <v-icon v-else>mdi-checkbox-marked-circle</v-icon>
+
+          <h3 class="icon-some">{{ route }}</h3>
         </div>
         <v-spacer></v-spacer>
-        <h3>{{ name }}</h3>
+        <h3 class="name-user">{{ name }}</h3>
       </template>
     </v-app-bar>
   </v-card>
@@ -54,6 +57,11 @@ export default {
         this.$router.push({ path: "/home/" });
       }
     },
+    logout() {
+      localStorage.removeItem("token");
+      this.$router.push({ path: "/login" });
+      this.$toasted.show("Você saiu.");
+    },
   },
   watch: {},
   mounted() {},
@@ -75,5 +83,18 @@ h3 {
   transform: scale(1.1);
   background: rgb(160, 41, 230, 0.4);
   cursor: pointer;
+}
+.route {
+  display: flex;
+}
+
+@media (max-width: 470px) {
+  .icon-some {
+    position: absolute;
+    display: none;
+  }
+  .name-user {
+    font-size: 20px;
+  }
 }
 </style>
