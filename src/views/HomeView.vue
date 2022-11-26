@@ -5,6 +5,17 @@
         <v-col cols="12">
           <h2>Clique no domínio de e-mail que deseja buscar:</h2>
         </v-col>
+        <v-toolbar dense floating class="rounded-pill" color="#7f6ed4" elevation="20px">
+          <v-text-field
+            color="#999"
+            class="text-input"
+            hide-details
+            prepend-icon="mdi-magnify"
+            single-line
+            @input="searchInputBar"
+            v-model="searchBar"
+          ></v-text-field>
+        </v-toolbar>
       </v-row>
       <v-row align="center" justify="center">
         <CardComponent :domains="domains" />
@@ -26,6 +37,7 @@ export default {
     return {
       emails: [],
       domains: [],
+      searchBar: "",
     };
   },
   methods: {
@@ -39,7 +51,9 @@ export default {
       this.$store.dispatch("decodeJwt", "id_user");
       let idUser = this.$store.state.dado;
       await axios
-        .get(`http://localhost:5000/contacts/domain/${idUser}`)
+        .get(
+          `https://conectacontactbackend-myb7gebzdq-rj.a.run.app/contacts/domain/${idUser}`
+        )
         .then((response) => {
           loader.hide();
           this.domains = response.data.domains;
@@ -47,6 +61,28 @@ export default {
         .catch((error) => {
           console.log("Erro =", error);
         });
+    },
+    searchInputBar() {
+      if (this.searchBar !== "") {
+        let pesquisa = () => {
+          return this.domains.filter((item) =>
+            item.toLowerCase().includes(this.searchBar.toLowerCase())
+          );
+        };
+        if (pesquisa) {
+          this.domains = pesquisa(this.searchBar);
+          let count = 0;
+          if (this.domains.length === 0) {
+            count++;
+            if (count > 0) {
+              this.$toasted.clear();
+            }
+            this.$toasted.error("Usuário não encontrado... Tente outro.");
+          }
+        }
+      } else {
+        return this.getDomainsFromDB();
+      }
     },
   },
   mounted() {
@@ -76,5 +112,11 @@ h2 {
 }
 .flexs {
   display: block !important;
+}
+
+@media (max-width: 470px) {
+  h2 {
+    font-size: 20px !important;
+  }
 }
 </style>

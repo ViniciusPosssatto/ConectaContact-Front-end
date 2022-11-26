@@ -15,12 +15,14 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    alias: ["/"]
   },
   {
-    path: '/home/:jwt',
+    path: '/home:jwt',
     name: 'homel',
-    component: HomeView
+    component: HomeView,
+    alias: ["/"]
   },
   {
     path: '/contacts',

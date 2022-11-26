@@ -90,4 +90,20 @@ export default {
   padding: 20px 50px;
   margin: 10px;
 }
+
+@media (max-width: 470px) {
+  .icon-some {
+    position: absolute;
+    display: none;
+  }
+  .card-msg {
+    padding: 10px 20px;
+    margin: 5px;
+  }
+  .msgComum {
+    font-family: Open Sans, var(--nv-fallback-ff);
+    font-size: 16px;
+    color: #b7a6f5;
+  }
+}
 </style>
