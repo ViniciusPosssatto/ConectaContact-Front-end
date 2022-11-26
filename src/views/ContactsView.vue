@@ -1,9 +1,14 @@
 <template>
   <v-app>
-    <v-container class="fill-height conecta-color" fluid>
+    <v-container class="fill-height conecta-color flexs" fluid>
       <v-row align="center" justify="center">
-        <CardComponent :emails="emailsByParam"
-      /></v-row>
+        <v-col cols="12">
+          <h2>Exibindo resultados para e-mails {{ param }}:</h2>
+        </v-col>
+        <v-col cols="12">
+          <CardComponent :emails="emailsByParam" />
+        </v-col>
+      </v-row>
     </v-container>
   </v-app>
 </template>
@@ -72,5 +77,14 @@ export default {
   font-family: Open Sans, var(--nv-fallback-ff);
   font-size: 30px;
   color: #b7a6f5;
+}
+.flexs {
+  display: block !important;
+}
+h2 {
+  color: azure;
+  padding: 10px;
+  margin: 10px;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 </style>
