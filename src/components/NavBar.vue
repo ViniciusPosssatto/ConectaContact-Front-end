@@ -8,6 +8,7 @@
       src="https://scontent.ffln1-1.fna.fbcdn.net/v/t39.30808-6/308514685_796298581649178_1022346858773960425_n.png?_nc_cat=110&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeEY9Lj0wS3tKOdGnSHINcFnsgrk2Ux2KcWyCuTZTHYpxREXLDn9no2TLqgZHVbaeyS8t-kBXBP_Wa3aCKtEFzwh&_nc_ohc=DP4TK04cXZMAX_NMEoj&_nc_ht=scontent.ffln1-1.fna&oh=00_AfDbBDz7XTpupDzMXBfJqrDuJpTuTcfSn65lI4Vr7xh3fQ&oe=63801EA6"
       fade-img-on-scroll
     >
+      <DropdownMenu />
       <template v-slot:img="{ props }">
         <v-img
           v-bind="props"
@@ -15,7 +16,7 @@
         ></v-img>
       </template>
 
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
       <v-spacer></v-spacer>
 
@@ -26,7 +27,7 @@
       <template v-slot:extension class="back">
         <div class="route" @click="pushRoute">
           <v-icon v-if="route == 'Home'">mdi-home</v-icon>
-          <v-icon v-else>mdi-checkbox-marked-circle</v-icon>
+          <v-icon v-else>mdi-contacts-outline</v-icon>
 
           <h3 class="icon-some">{{ route }}</h3>
         </div>
@@ -38,7 +39,9 @@
 </template>
 
 <script>
+import DropdownMenu from "./DropdownMenu.vue";
 export default {
+  components: { DropdownMenu },
   name: "NavBar",
   props: {
     name: String,
