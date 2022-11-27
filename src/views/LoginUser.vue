@@ -3,11 +3,15 @@
     <v-container class="fill-height conecta-color" fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" xl="4" lg="4" md="6" sm="8" xs="12">
-          <v-card elevation="24" width="600px" min-height="220px" class="card">
-            <div class="text-center">
-              <h1 class="mb-2">Acessar meus contatos Google</h1>
+          <v-card elevation="24" max-width="600px" min-height="220px" class="card">
+            <div class="img-centralize">
+              <v-img
+                class="img-center"
+                max-width="400px"
+                src="https://user-images.githubusercontent.com/101053966/204116071-f42933b9-bf07-4705-86ce-6a65f8e27d5b.png"
+              ></v-img>
             </div>
-            <v-card-text class="text-white">
+            <v-card-text class="text-white btn-login">
               <v-btn
                 class="rounded-5"
                 color="#311f50"
@@ -31,17 +35,21 @@
       </v-row>
       <v-row justify="space-around">
         <v-card elevation="20" width="120px">
-          <v-img
-            src="https://scontent.ffln1-1.fna.fbcdn.net/v/t39.30808-6/309507295_796298584982511_4707131721395890912_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH8zv00USILC5xo2bX-ai-WBixml55aIvQGLGaXnloi9OiD8zKqkVJYp9d87Lyfvqq_NL2OJFYI6HROOWJaAD6p&_nc_ohc=ivoMg1hvHSoAX9cT3gc&_nc_ht=scontent.ffln1-1.fna&oh=00_AfB58-PRbYEB41uR18-jPEKEW2SQL1XD2Y-oy_Svbf5DsA&oe=63815030"
-          ></v-img>
+          <a href="https://conectanuvem.com.br">
+            <v-img
+              src="https://scontent.ffln1-1.fna.fbcdn.net/v/t39.30808-6/309507295_796298584982511_4707131721395890912_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH8zv00USILC5xo2bX-ai-WBixml55aIvQGLGaXnloi9OiD8zKqkVJYp9d87Lyfvqq_NL2OJFYI6HROOWJaAD6p&_nc_ohc=ivoMg1hvHSoAX9cT3gc&_nc_ht=scontent.ffln1-1.fna&oh=00_AfB58-PRbYEB41uR18-jPEKEW2SQL1XD2Y-oy_Svbf5DsA&oe=63815030"
+            ></v-img>
+          </a>
         </v-card>
 
         <v-card elevation="20" width="120px">
-          <v-img
-            width="200px"
-            src="https://conectanuvem.com.br/wp-content/uploads/2021/03/Conecta-Nuvem-Parceira-Google-Cloud-1.png"
-          >
-          </v-img>
+          <a href="https://cloud.google.com/find-a-partner/partner/conecta-nuvem"
+            ><v-img
+              width="200px"
+              src="https://conectanuvem.com.br/wp-content/uploads/2021/03/Conecta-Nuvem-Parceira-Google-Cloud-1.png"
+            >
+            </v-img>
+          </a>
         </v-card>
       </v-row>
       <v-row></v-row>
@@ -86,5 +94,15 @@ span {
   background: linear-gradient(81deg, rgb(81, 183, 243) 2%, rgb(69, 136, 238) 57%);
   padding: 20px;
   border-radius: 20px !important;
+  text-align: -webkit-center;
+}
+.img-center {
+  border-radius: 20px !important;
+}
+.img-centralize {
+  text-align: -webkit-center;
+}
+.btn-login {
+  max-width: 430px;
 }
 </style>
