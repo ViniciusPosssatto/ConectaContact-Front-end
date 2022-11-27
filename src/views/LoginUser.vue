@@ -19,7 +19,7 @@
                 x-large
                 block
                 @click="loginOAuth"
-                ><v-icon large color="white darken-2"> mdi-email </v-icon>
+                ><v-icon large color="white darken-2"> mdi-google </v-icon>
                 <span>Login</span></v-btn
               >
             </v-card-text>
