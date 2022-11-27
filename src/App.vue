@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     path() {
-      if (this.$route.path == "/login") {
+      if (this.$route.path == "/login" || this.$route.path == "/") {
         return true;
       } else {
         return false;

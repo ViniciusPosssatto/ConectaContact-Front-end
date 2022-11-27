@@ -11,19 +11,17 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginUser,
+    alias: ["/"],
   },
   {
     path: '/home',
     name: 'home',
     component: HomeView,
-    alias: ["/"],
-
   },
   {
     path: '/home:jwt',
     name: 'homel',
     component: HomeView,
-    alias: ["/"],
     meta: { auth: true }
   },
   {
