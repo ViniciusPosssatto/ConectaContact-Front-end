@@ -15,6 +15,7 @@
 - [Dependencias utilizadas](#dependencias-utilizadas)
 - [Como executar](#como-executar-o-projeto-local)
 - [Desenvolvedor](#desenvolvedor)
+- [Exemplos das telas](#exemplos-das-telas)
 
 </br>
 </br>
@@ -72,3 +73,21 @@ npm run serve
 | :---: | 
 
 [`Linkedin disponível aqui`](https://www.linkedin.com/in/vinicius-possatto-stormoski-3696a922b/)
+
+</br>
+
+# Exemplos das telas
+
+ -  Tela de login
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/101053966/204139291-0695f519-c8ba-4555-974c-7c4d92c29ad8.png" width="420" />
+  <img src="https://user-images.githubusercontent.com/101053966/204139290-f908cc43-6eaf-414a-9b5f-c5f145cec579.jpg" width="300" />
+</p>
+
+- Tela home
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/101053966/204139293-946f298b-ede1-471f-aaeb-41dbc6112f03.jpg" width="420" />
+  <img src="https://user-images.githubusercontent.com/101053966/204139292-b68dc2d1-32ee-4b6d-a0cb-785611e9679e.jpg" width="300" />
+</p>
