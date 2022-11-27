@@ -34,11 +34,10 @@
         </v-col>
       </v-row>
       <v-row justify="space-around">
-        <v-card elevation="20" width="120px">
+        <v-card elevation="20" width="120px" height="100px">
           <a href="https://conectanuvem.com.br">
-            <v-img
-              src="https://scontent.ffln1-1.fna.fbcdn.net/v/t39.30808-6/309507295_796298584982511_4707131721395890912_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH8zv00USILC5xo2bX-ai-WBixml55aIvQGLGaXnloi9OiD8zKqkVJYp9d87Lyfvqq_NL2OJFYI6HROOWJaAD6p&_nc_ohc=ivoMg1hvHSoAX9cT3gc&_nc_ht=scontent.ffln1-1.fna&oh=00_AfB58-PRbYEB41uR18-jPEKEW2SQL1XD2Y-oy_Svbf5DsA&oe=63815030"
-            ></v-img>
+            <img src="../assets/channels4_profile.jpg" width="120px" />
+            
           </a>
         </v-card>
 
