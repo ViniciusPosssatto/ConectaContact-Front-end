@@ -57,6 +57,9 @@ export default {
         .then((response) => {
           loader.hide();
           this.domains = response.data.domains;
+          if (this.domains.length === 0) {
+            this.$toasted.error("Você não possui contatos cadastrados com e-mail.");
+          }
         })
         .catch((error) => {
           console.log("Erro =", error);

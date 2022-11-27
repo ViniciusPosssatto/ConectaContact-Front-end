@@ -64,6 +64,11 @@ export default {
         .then((response) => {
           loader.hide();
           this.emails = response.data.results;
+          if (this.emails.length === 0) {
+            this.$toasted.error("Você não possui contatos cadastrados com e-mail.", {
+              duration: 3000,
+            });
+          }
         })
         .catch((error) => {
           console.log("Erro =", error);

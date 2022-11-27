@@ -10,24 +10,27 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: LoginUser
+    component: LoginUser,
   },
   {
     path: '/home',
     name: 'home',
     component: HomeView,
-    alias: ["/"]
+    alias: ["/"],
+
   },
   {
     path: '/home:jwt',
     name: 'homel',
     component: HomeView,
-    alias: ["/"]
+    alias: ["/"],
+    meta: { auth: true }
   },
   {
     path: '/contacts',
     name: 'contacts',
-    component: ContactsView
+    component: ContactsView,
+    meta: { auth: true }
   }
 ]
 
@@ -35,6 +38,15 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const auth = localStorage.getItem('token');
+  if (to.meta.auth === !auth) {
+    next("/login")
+  }else{
+    next()
+  }
 })
 
 export default router
