@@ -87,4 +87,7 @@ export default {
 .menu-drop {
   position: fixed !important;
 }
+a {
+  text-decoration: none;
+}
 </style>
