@@ -36,7 +36,7 @@
       <v-row justify="space-around">
         <v-card elevation="20" width="120px" height="100px">
           <a href="https://conectanuvem.com.br">
-            <img src="../assets/channels4_profile.jpg" width="120px" />
+            <img src="https://user-images.githubusercontent.com/101053966/204145021-5b3c928d-3a8f-483f-ad82-1ee76864dd74.jpg" width="120px" />
             
           </a>
         </v-card>
