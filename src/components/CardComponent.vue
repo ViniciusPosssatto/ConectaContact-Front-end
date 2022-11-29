@@ -25,8 +25,9 @@
         hover
         v-for="item in emails"
         :key="item.email"
+        @click="changeModalState(item)"
       >
-        <span v-text="item.email" class="msgComum" @click="changeModalState(item)"></span>
+        <span v-text="item.email" class="msgComum" ></span>
       </v-card>
     </v-row>
     <ModalComponent
