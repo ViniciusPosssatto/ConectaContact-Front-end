@@ -23,11 +23,11 @@
                 <span>Login</span></v-btn
               >
             </v-card-text>
-            <v-card-actions class="ml-6 mr-6 text-center">
+            <v-card-actions class="ml-15 mr-15 text-center">
               <p>
-                Clicando em login você aceita Conecta Contact
-                <a href="#" class="pl-2" style="color: #000000">Policy</a> e
-                <a href="#" class="pl-2" style="color: #000000">Terms of Use</a>
+                Clicando em login você aceita Conecta Contact                
+                <a href="#" style="color: #000000">Policy</a> e
+                <a href="#" style="color: #000000">Terms of Use.</a>
               </p>
             </v-card-actions>
           </v-card>
